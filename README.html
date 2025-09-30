@@ -1,0 +1,316 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Markdown Looks Good Example</title>
+    <style>
+/* TODO: the .firefox-only and .chrome-only classes aren't implemented.
+   They're only useful for getting the whitespace around headings right when copy-pasting from a browser into plain text. */
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: sans-serif;
+  line-height: 1.3;
+}
+
+body {
+  background-color: Canvas;
+  color: CanvasText;
+  color-scheme: light dark;
+}
+
+#toc {
+  background: #111;
+  width: 350px;
+}
+@media (width >= 1510px) {
+  #toc {
+    position: fixed;
+    right: 0%;
+    top: 40px;
+    z-index: 9001;
+  }
+  #toc .label {
+    display: none;
+  }
+}
+@media (width < 1510px) {
+  #toc {
+    margin: 10px;
+    width: fit-content;
+  }
+}
+#toc li {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+#content {
+  max-width: 960px;
+}
+
+#content p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+#content h1 {
+  margin-block-start: 1em;
+  margin-block-end: 0em;
+  margin-left: 0px;
+}
+#content h2,
+#content h3,
+#content h4 {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+#content pre, code {
+  background: light-dark(#eee, #222);
+  border-radius: 5px;
+  font-family: monospace;
+  /* not sure why monospace looks smaller. */
+  font-size: 1.1em;
+}
+#content pre {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+#content li.custom {
+  list-style-type: none;
+  margin-left: 1em;
+  padding-left: 2ex;
+  text-indent: -2ex;
+}
+#content strong {
+}
+#content a.internal {
+  color: inherit;
+  font-family: inherit;
+  text-decoration-color: #888;
+}
+#content a.external {
+  color: light-dark(#1250BA, #3E85FF);
+  text-decoration-color: currentColor;
+}
+#content a.self-link {
+  text-decoration: none;
+  color: #888;
+}
+#content a.self-link:hover {
+  text-decoration: underline;
+}
+
+span.symbol {
+  font-size: 1em;
+  color: #888;
+}
+
+.hide {
+  display: none;
+}
+
+.rowlike {
+  clear: both;
+  margin-top: 2rem;
+}
+
+img.thumbnail {
+  width: 200px;
+  margin: 0px 10px 10 10px;
+  float: right;
+}
+
+.set-in {
+  margin: 10px 30px;
+}
+
+.heading {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  margin-top: 8px;
+}
+.heading .title {
+  float: left;
+}
+.heading .right {
+  float: right;
+  font-size: 0.8em;
+  position: relative;
+}
+.heading .clear {
+  clear: both;
+}
+
+#content ul {
+  margin: 10px 20px;
+}
+#content ul.custom, #content ol.custom {
+  margin: 0px;
+}
+#toc ul {
+  margin: 0px;
+}
+
+.button-row button {
+  background-color: #ECC968;
+  border: 0;
+  border-radius: 5px;
+  color: #333333;
+  padding: 5px 8px;
+}
+.button-row a {
+  margin-right: 15px;
+}
+.button-row a:hover button {
+  background-color: #FFEDB9 !important;
+}
+
+/* desktop / landscape */
+@media(aspect-ratio >= 1) {
+  #content {
+    margin-left: 200px;
+    position: relative;
+    width: auto;
+  }
+}
+/* portrait / mobile */
+@media(aspect-ratio < 1) {
+  #content {
+    margin: 10px;
+  }
+}
+
+/* Printer-friendly */
+@media print {
+  #content {
+    margin-left: 0px;
+  }
+  #content h1 {
+    font-size: 14pt;
+  }
+  #content h1 {
+    text-align: center;
+    margin: 8px 0px 0px 0px;
+  }
+  #content h2, #content h3 {
+    font-size: 12pt;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: inherit !important;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div id="content">
+<h1 id=markdown-looks-good><a class=self-link href=#markdown-looks-good><span class=symbol>#</span></a> markdown-looks-good</h1><br class=chrome-only><p>
+a markdown to html renderer that shows <strong id=all><a class=self-link href=#all><span class=symbol>**</span></a>all<span class=symbol>**</span></strong> <span class=symbol>_</span><em>the</em><span class=symbol>_</span> <span class=symbol>`</span><code>syntax</code><span class=symbol>`</span>
+</p>
+<div id=toc class=no-print>
+<div class=label>Contents</div>
+<ul class=custom>
+<li><span class=symbol>#&nbsp;</span><a class=internal href=#markdown-looks-good>markdown-looks-good</a></li>
+<li><span class=symbol>##&nbsp;</span><a class=internal href=#Demo>Demo</a></li>
+<li><span class=symbol>##&nbsp;</span><a class=internal href=#Design>Design</a></li>
+<li><span class=symbol>##&nbsp;</span><a class=internal href=#Usage>Usage</a></li>
+<li><span class=symbol>##&nbsp;</span><a class=internal href=#Cool-Stuff>Cool Stuff</a></li>
+<li><span class=symbol>###&nbsp;</span><a class=internal href=#Heading-3>Heading 3</a></li>
+<li><span class=symbol>###&nbsp;</span><a class=internal href=#Bold-is-Definitions-and-Generates-internal-links>Bold is Definitions and Generates internal links</a></li>
+<li><span class=symbol>##&nbsp;</span><a class=internal href=#But-how-do-you>But how do you...</a></li>
+</ul>
+
+</div>
+<br class=firefox-only><h2 id=Demo><a class=self-link href=#Demo><span class=symbol>##</span></a> Demo</h2><br class=chrome-only><p>
+Check out this readme as HTML here: <a class=external href=https://wolfesoftware.com/markdown-looks-good-example/README.html>https://wolfesoftware.com/markdown-looks-good-example/README.html</a>
+</p>
+<br class=firefox-only><h2 id=Design><a class=self-link href=#Design><span class=symbol>##</span></a> Design</h2><br class=chrome-only><p>
+I like the look of markdown syntax, and I don't think it needs to be hidden in the rendering.
+Furthermore, I'd like to get very close to supporting "just works" status for selecting and copy+pasting from the browser into plain text.
+</p>
+<p>
+Try coping swaths of this document from the GitHub rendering into a text file, then try it with my HTML rendering.
+It's not perfect (I think it can't be perfect due to browser differences), but it's pretty close, and that's pretty cool.
+</p>
+<p>
+This is a single-file Python script with no dependencies beyond the stdlib.
+</p>
+<br class=firefox-only><h2 id=Usage><a class=self-link href=#Usage><span class=symbol>##</span></a> Usage</h2><br class=chrome-only><p>
+Command line:
+</p>
+<pre><span class=symbol>```</span>
+./markdown_looks_good.py input.md --output fragment.html
+<span class=symbol>```</span></pre><p>
+Then use that fragment in your html context.
+Check out <span class=symbol>`</span><code>suggested-template.html</code><span class=symbol>`</span> for CSS suggestions and document structure ideas,
+although note that this example is not meant to be polished.
+</p>
+<p>
+You can also import the python file and call <span class=symbol>`</span><code>markdown_to_html()</code><span class=symbol>`</span> directly.
+</p>
+<p>
+I suggest using <a class=external href=https://github.com/thejoshwolfe/git-vendor>https://github.com/thejoshwolfe/git-vendor</a> to manage simple dependencies like this program.
+</p>
+<p>
+To generate the HTML for this readme located here: <a class=external href=https://wolfesoftware.com/markdown-looks-good-example/README.html>https://wolfesoftware.com/markdown-looks-good-example/README.html</a> :
+</p>
+<pre><span class=symbol>```</span>
+./markdown_looks_good.py README.md --template suggested-template.html -o README.html
+<span class=symbol>```</span></pre><br class=firefox-only><h2 id=Cool-Stuff><a class=self-link href=#Cool-Stuff><span class=symbol>##</span></a> Cool Stuff</h2><br class=chrome-only><p>
+Here's a demonstration of some features.
+</p>
+<ul class=custom>
+<li class=custom><span class=symbol>*</span> unordered</li>
+<li class=custom><span class=symbol>*</span> lists</li>
+</ul>
+<p>
+and
+</p>
+<ol class=custom>
+<li class=custom>1. ordered</li>
+<li class=custom>2. lists</li>
+</ol>
+<br class=firefox-only><h3 id=Heading-3><a class=self-link href=#Heading-3><span class=symbol>###</span></a> Heading 3</h3><br class=chrome-only><p>
+You can link to section headings with bare text that exactly matches like this: <a class=internal href=#Cool-Stuff>Cool Stuff</a>.
+</p>
+<br class=firefox-only><h4 id=Heading-4><a class=self-link href=#Heading-4><span class=symbol>####</span></a> Heading 4</h4><br class=chrome-only><p>
+4th level headings are omitted from the table of contents by default. Use the <span class=symbol>`</span><code>--toc-levels</code><span class=symbol>`</span> parameter to configure this.
+</p>
+<br class=firefox-only><h3 id=Bold-is-Definitions-and-Generates-internal-links><a class=self-link href=#Bold-is-Definitions-and-Generates-internal-links><span class=symbol>###</span></a> Bold is Definitions and Generates internal links</h3><br class=chrome-only><p>
+If a term is written in <strong id=bold><a class=self-link href=#bold><span class=symbol>**</span></a>bold<span class=symbol>**</span></strong>, then any exact text matches of that phrase (e.g. <a class=internal href=#bold>bold</a>) becomes an internal link.
+I use this for technical writing in the Common ZIP project: <a class=external href=https://commonzip.org/>https://commonzip.org/</a>
+</p>
+<p>
+If you don't like this feature, sorry there's no off switch for it (yet?). Let me know if want this feature.
+It can get pretty surprising and <a class=internal href=#all>all</a>.
+</p>
+<br class=firefox-only><h2 id=But-how-do-you><a class=self-link href=#But-how-do-you><span class=symbol>##</span></a> But how do you...</h2><br class=chrome-only><p>
+The following are not supported because it's impossible to do the "just works" copy+pasting thing with them:
+</p>
+<ul class=custom>
+<li class=custom><span class=symbol>*</span> links with the url hidden <span class=symbol>`</span><code>[text](url)</code><span class=symbol>`</span></li>
+<li class=custom><span class=symbol>*</span> images <span class=symbol>`</span><code>![caption](url)</code><span class=symbol>`</span></li>
+<li class=custom><span class=symbol>*</span> tables</li>
+</ul>
+<p>
+This doesn't work because it's too complicated:
+</p>
+<ul class=custom>
+<li class=custom><span class=symbol>*</span> syntax clue for triple-backtick blocks: <span class=symbol>`</span><code>'''python</code><span class=symbol>`</span> (except that the <span class=symbol>`</span><code>'</code><span class=symbol>`</span> are backticks)</li>
+</ul>
+<p>
+Just haven't gotten around to these:
+</p>
+<ul class=custom>
+<li class=custom><span class=symbol>*</span> block quotes <span class=symbol>`</span><code>&gt;</code><span class=symbol>`</span></li>
+<li class=custom><span class=symbol>*</span> the whitespace parsing is a little picky, sorry.</li>
+</ul>
+
+    </div>
+  </body>
+</html>
