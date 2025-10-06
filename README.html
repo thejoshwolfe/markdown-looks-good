@@ -7,22 +7,27 @@
 /* TODO: the .firefox-only and .chrome-only classes aren't implemented.
    They're only useful for getting the whitespace around headings right when copy-pasting from a browser into plain text. */
 
+/* Layout */
 * {
   margin: 0;
   padding: 0;
-
-  font-family: sans-serif;
-  line-height: 1.3;
 }
-
-body {
-  background-color: Canvas;
-  color: CanvasText;
-  color-scheme: light dark;
+@media(aspect-ratio >= 1) {
+  #content {
+    margin-left: 200px;
+    position: relative;
+    width: auto;
+  }
 }
-
+@media(aspect-ratio < 1) {
+  #content {
+    margin: 10px;
+  }
+}
+#content {
+  max-width: 960px;
+}
 #toc {
-  background: #111;
   width: 350px;
 }
 @media (width >= 1510px) {
@@ -42,14 +47,23 @@ body {
     width: fit-content;
   }
 }
+@media print {
+  #content {
+    margin-left: 0px;
+  }
+  #toc {
+    display: none;
+  }
+  #content h1 {
+    text-align: center;
+    margin: 8px 0px 0px 0px;
+  }
+}
+#toc ul {
+  margin: 0px;
+}
 #toc li {
   list-style-type: none;
-  display: grid;
-  grid-template-columns: min-content auto;
-}
-
-#content {
-  max-width: 960px;
 }
 
 #content p {
@@ -68,15 +82,18 @@ body {
   margin-block-end: 0em;
 }
 #content pre, code {
-  background: light-dark(#eee, #222);
   border-radius: 5px;
-  font-family: monospace;
-  /* not sure why monospace looks smaller. */
-  font-size: 1.1em;
 }
+
 #content pre {
   margin-left: 1em;
   padding-left: 1em;
+}
+#content ul {
+  margin: 10px 20px;
+}
+#content ul.custom, #content ol.custom {
+  margin: 0px;
 }
 #content li.custom {
   list-style-type: none;
@@ -84,7 +101,40 @@ body {
   padding-left: 2ex;
   text-indent: -2ex;
 }
+
+/* Typography */
+* {
+  font-family: sans-serif;
+  line-height: 1.3;
+}
+#content pre, code {
+  font-family: monospace;
+  /* not sure why monospace looks smaller. */
+  font-size: 1.1em;
+}
+@media print {
+  #content h1 {
+    font-size: 14pt;
+  }
+  #content h2, #content h3 {
+    font-size: 12pt;
+  }
+}
 #content strong {
+  font-weight: bolder;
+}
+#content em {
+  font-style: italic;
+}
+
+/* Colors */
+body {
+  color-scheme: light dark;
+  background-color: light-dark(#eee, #111);
+  color: light-dark(#000, #fff);
+}
+#content pre, #content code, #toc {
+  background: light-dark(#ddd, #222);
 }
 #content a.internal {
   color: inherit;
@@ -102,102 +152,10 @@ body {
 #content a.self-link:hover {
   text-decoration: underline;
 }
-
 span.symbol {
-  font-size: 1em;
   color: #888;
 }
-
-.hide {
-  display: none;
-}
-
-.rowlike {
-  clear: both;
-  margin-top: 2rem;
-}
-
-img.thumbnail {
-  width: 200px;
-  margin: 0px 10px 10 10px;
-  float: right;
-}
-
-.set-in {
-  margin: 10px 30px;
-}
-
-.heading {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
-  margin-top: 8px;
-}
-.heading .title {
-  float: left;
-}
-.heading .right {
-  float: right;
-  font-size: 0.8em;
-  position: relative;
-}
-.heading .clear {
-  clear: both;
-}
-
-#content ul {
-  margin: 10px 20px;
-}
-#content ul.custom, #content ol.custom {
-  margin: 0px;
-}
-#toc ul {
-  margin: 0px;
-}
-
-.button-row button {
-  background-color: #ECC968;
-  border: 0;
-  border-radius: 5px;
-  color: #333333;
-  padding: 5px 8px;
-}
-.button-row a {
-  margin-right: 15px;
-}
-.button-row a:hover button {
-  background-color: #FFEDB9 !important;
-}
-
-/* desktop / landscape */
-@media(aspect-ratio >= 1) {
-  #content {
-    margin-left: 200px;
-    position: relative;
-    width: auto;
-  }
-}
-/* portrait / mobile */
-@media(aspect-ratio < 1) {
-  #content {
-    margin: 10px;
-  }
-}
-
-/* Printer-friendly */
 @media print {
-  #content {
-    margin-left: 0px;
-  }
-  #content h1 {
-    font-size: 14pt;
-  }
-  #content h1 {
-    text-align: center;
-    margin: 8px 0px 0px 0px;
-  }
-  #content h2, #content h3 {
-    font-size: 12pt;
-  }
-
   a {
     text-decoration: none;
   }
@@ -212,7 +170,7 @@ img.thumbnail {
 <h1 id=markdown-looks-good><a class=self-link href=#markdown-looks-good><span class=symbol>#</span></a> markdown-looks-good</h1><br class=chrome-only><p>
 a markdown to html renderer that shows <strong id=all><a class=self-link href=#all><span class=symbol>**</span></a>all<span class=symbol>**</span></strong> <span class=symbol>_</span><em>the</em><span class=symbol>_</span> <span class=symbol>`</span><code>syntax</code><span class=symbol>`</span>
 </p>
-<div id=toc class=no-print>
+<nav id=toc>
 <div class=label>Contents</div>
 <ul class=custom>
 <li><span class=symbol>#&nbsp;</span><a class=internal href=#markdown-looks-good>markdown-looks-good</a></li>
@@ -225,7 +183,7 @@ a markdown to html renderer that shows <strong id=all><a class=self-link href=#a
 <li><span class=symbol>##&nbsp;</span><a class=internal href=#But-how-do-you>But how do you...</a></li>
 </ul>
 
-</div>
+</nav>
 <br class=firefox-only><h2 id=Demo><a class=self-link href=#Demo><span class=symbol>##</span></a> Demo</h2><br class=chrome-only><p>
 Check out this readme as HTML here: <a class=external href=https://wolfesoftware.com/markdown-looks-good-example/README.html>https://wolfesoftware.com/markdown-looks-good-example/README.html</a>
 </p>

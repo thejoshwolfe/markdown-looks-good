@@ -215,7 +215,7 @@ def markdown_to_html(contents, *, do_internal_links, toc_levels):
             if h_number > 1 and not found_first_non_h1_heading:
                 found_first_non_h1_heading = True
                 if toc_html:
-                    out.write("<div id=toc class=no-print>\n" + toc_html + "\n</div>\n")
+                    out.write("<nav id=toc>\n" + toc_html + "\n</nav>\n")
 
             plain, formatted = format_minor_syntax(text)
             if h_number > 1:
